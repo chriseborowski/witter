@@ -16,6 +16,9 @@ class UserProfile(models.Model):
   symmetrical=False, # Set asymmetrical user-to-user following relationship
   blank=True) # Allow user not to follow anyone
 
+  # Update date modified when profile is updated
+  date_modified = models.DateTimeField(User, auto_now=True)
+
   def __str__(self):
     return self.user.username
 
