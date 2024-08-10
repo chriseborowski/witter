@@ -8,14 +8,14 @@ from django.dispatch import receiver
 class UserProfile(models.Model):
 
   # Set a one-to-one relationship between each user and their profile
-  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
   
   # Allow for many-to-many relationships between profiles
   follows = models.ManyToManyField("self",
   related_name="followed_by",
   symmetrical=False, # Set asymmetrical user-to-user following relationship
   blank=True) # Allow user not to follow anyone
-
+  
   # Update date modified when profile is updated
   date_modified = models.DateTimeField(User, auto_now=True)
 
