@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import UserProfile
+from .models import UserProfile, Witt
 
 # Create your views here.
 def home(request):
-  return render(request, 'home.html', {})
+  if request.user.is_authenticated:
+    witts = Witt.objects.all().order_by('-created_at')
+
+  return render(request, 'home.html', {"witts":witts})
 
 def profile_list(request):
   if request.user.is_authenticated:
