@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Profile</h1>
+
+{% if profile %}
+
+    <h1>@{{ profile.user.username }}'s Profile</h1><br>
+
+    <strong>Following</strong><br>
+
+    {% for following in profile.follows.all %}
+      <a href="{% url 'profile' following.user.id %}">@{{ following }}</a><br>
+
+    {% endfor %}
+
+    <br>
+    <strong>Followers</strong><br>
+
+    {% for following in profile.followed_by.all %}
+      <a href="{% url 'profile' following.user.id %}">@{{ following }}</a><br>
+
+    {% endfor %}
+
+{% endif %}
 {% endblock %}
