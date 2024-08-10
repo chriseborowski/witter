@@ -4,22 +4,49 @@
 
 {% if profile %}
 
-    <h1>@{{ profile.user.username }}'s Profile</h1><br>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-8">
+        <h1>@{{ profile.user.username }}'s Profile</h1><br>
+      </div>
 
-    <strong>Following</strong><br>
+      <div class="col-4">
 
-    {% for following in profile.follows.all %}
-      <a href="{% url 'profile' following.user.id %}" title="{{ following.user.username }}">@{{ following }}</a><br>
+  <div class="card">
+    <div class="card-header">Following</div>
+      <div class="card-body">
+        <p class="card-text">
+    
+        {% for following in profile.follows.all %}
+    
+          <a href="{% url 'profile' following.user.id %}" title="{{ following.user.username }}">@{{ following }}</a><br>
 
-    {% endfor %}
+        {% endfor %}
 
-    <br>
-    <strong>Followers</strong><br>
+        </p>
+      </div>
+  </div>
 
-    {% for following in profile.followed_by.all %}
-      <a href="{% url 'profile' following.user.id %}" title="{{ following.user.username }}">@{{ following }}</a><br>
+  <br><br>
 
-    {% endfor %}
+  <div class="card">
+    <div class="card-header">Followers</div>
+      <div class="card-body">
+        <p class="card-text">
+    
+        {% for following in profile.followed_by.all %}
+
+        <a href="{% url 'profile' following.user.id %}" title="{{ following.user.username }}">@{{ following }}</a><br>
+
+        {% endfor %}
+
+        </p>
+      </div>
+  </div>
+
+      </div>
+    </div>
+  </div>
 
 {% endif %}
 {% endblock %}
