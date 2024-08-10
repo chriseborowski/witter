@@ -3,6 +3,23 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+# Create a witt (posts) model
+
+class Witt(models.Model):
+  user = models.ForeignKey(
+    User, 
+    related_name="witts", 
+    on_delete=models.DO_NOTHING)
+  body = models.CharField(max_length=200)
+  created_at = models.DateTimeField(auto_now_add=True)
+
+  def __str__(self):
+    return(
+      f"{self.user} "
+      f"({self.created_at:%d-%m-%Y at %H:%M}): "
+      f"{self.body}..."
+    )
+
 # Create a user profile model
 
 class UserProfile(models.Model):
@@ -15,7 +32,7 @@ class UserProfile(models.Model):
   related_name="followed_by",
   symmetrical=False, # Set asymmetrical user-to-user following relationship
   blank=True) # Allow user not to follow anyone
-  
+
   # Update date modified when profile is updated
   date_modified = models.DateTimeField(User, auto_now=True)
 
