@@ -20,6 +20,7 @@ def profile_list(request):
 def profile(request, pk):
   if request.user.is_authenticated:
     profile = UserProfile.objects.get(user_id=pk)
+    witt = Witt.objects.filter(user_id=pk).order_by('-created_at')
 
     # Follow/Unfollow logic using POST
     if request.method == "POST":
@@ -31,7 +32,7 @@ def profile(request, pk):
         current_user_profile.follows.add(profile)
       current_user_profile.save()
     
-    return render(request, 'profile.html', {"profile": profile})
+    return render(request, 'profile.html', {"profile": profile, "witts":witt})
   else:
     messages.success(request, ("You must be logged in to view this page"))
     return redirect('home')
