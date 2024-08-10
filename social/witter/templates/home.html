@@ -2,4 +2,15 @@
 
 {% block content %}
 <h1>This is Witter: A Better Twitter.</h1>
+<br><br>
+<h4>What people are saying…</h4>
+
+{% for witt in witts %}
+
+  {{ witt }}
+  <br>
+
+{% endfor %}
+
+
 {% endblock %}
