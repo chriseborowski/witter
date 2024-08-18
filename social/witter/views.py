@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import UserProfile, Witt
 from .forms import WittForm
-from django.contrib import Authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def home(request):
