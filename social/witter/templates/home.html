@@ -13,7 +13,10 @@
 {% for witt in witts %}
 
   <div class="alert alert-info" role="alert">
-    {{ witt }}
+    <small class="text-muted">
+      <b>@{{ witt.user.username }}</b> witted on {{ witt.created_at}} <br>
+    </small>
+    {{ witt.body }}
   </div>
 
 {% endfor %}
