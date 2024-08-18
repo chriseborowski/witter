@@ -4,6 +4,7 @@ from .models import UserProfile, Witt
 
 # Create your views here.
 def home(request):
+  witts = None
   if request.user.is_authenticated:
     witts = Witt.objects.all().order_by('-created_at')
 
