@@ -1,14 +1,26 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import UserProfile, Witt
+from .forms import WittForm
 
 # Create your views here.
 def home(request):
   witts = None
   if request.user.is_authenticated:
-    witts = Witt.objects.all().order_by('-created_at')
+    form = WittForm(request.POST or None)
+    if request.method == "POST":
+      if form.is_valid():
+        witt = form.save(commit=False)
+        witt.user = request.user
+        witt.save()
+        messages.success(request, ("Your witt has been posted!"))
+        return redirect('home')
 
-  return render(request, 'home.html', {"witts":witts})
+    witts = Witt.objects.all().order_by('-created_at')
+    return render(request, 'home.html', {"witts":witts, "form":form})
+  else:
+    witts = Witt.objects.all().order_by('-created_at')
+    return render(request, 'home.html', {"witts":witts})
 
 def profile_list(request):
   if request.user.is_authenticated:
