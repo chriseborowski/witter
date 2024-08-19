@@ -87,9 +87,9 @@ def register_user(request):
       form.save()
       username = form.cleaned_data['username']
       password = form.cleaned_data['password1']
-      # first_name = form.cleaned_data['first_name']
-      # last_name = form.cleaned_data['last_name']
-      # email = form.cleaned_data['email']
+      first_name = form.cleaned_data['first_name']
+      last_name = form.cleaned_data['last_name']
+      email = form.cleaned_data['email']
       # Log in user
       user = authenticate(username=username, password=password)
       login(request, user)
@@ -106,7 +106,7 @@ def update_user(request):
     form = ProfileUpdateForm(request.POST or None, instance=current_user)
     if form.is_valid():
       form.save()
-      login(request, current_user)
+      # login(request, current_user)
       messages.success(request, ("Your profile has been updated."))
       return redirect('home')
     return render(request, 'update_user.html', {'form': form})
