@@ -66,6 +66,12 @@
     {% endif %}
 
   </form>
+  <br>
+
+  <!-- Display Update profile button if the user is the same as the logged in user -->
+  {% if request.user.id == profile.user.id %}  
+    <a href="{% url 'update_user' %}" class="btn btn-outline-secondary">Update profile</a>
+  {% endif %}
 
       </div>
     </div>
