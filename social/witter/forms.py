@@ -29,7 +29,7 @@ class SignUpForm(UserCreationForm):
     fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
   def __init__(self, *args, **kwargs):
-    self(superSignUpForm, self).__init__(*args, **kwargs)
+    super(SignUpForm, self).__init__(*args, **kwargs)
 
     self.fields['username'].widget.attrs['class'] = 'form-control'
     self.fields['username'].widget.attrs['placeholder'] = 'Your username'
@@ -48,14 +48,26 @@ class SignUpForm(UserCreationForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-  email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your email address'}))
+  # email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your email address'}))
   first_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your first name'}))
   last_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your last name'}))
 
   class Meta:
-    model = User
-    fields = ('first_name', 'last_name', 'email')
+    model = UserProfile
+    fields = ('first_name', 'last_name')
 
   def __init__(self, *args, **kwargs):
     super(ProfileUpdateForm, self).__init__(*args, **kwargs)
-    self.fields['email'].label = "Email address"
+    if self.instance and self.instance.user:
+      self.fields['first_name'].initial = self.instance.user.first_name
+      self.fields['last_name'].initial = self.instance.user.last_name
+  
+  def save(self, commit=True):
+    profile = super().save(commit=False)
+    # profile.user.email = self.cleaned_data['email']
+    profile.user.first_name = self.cleaned_data['first_name']
+    profile.user.last_name = self.cleaned_data['last_name']
+    if commit:
+        profile.user.save()
+        profile.save()
+    return profile
