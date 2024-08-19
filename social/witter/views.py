@@ -97,3 +97,11 @@ def register_user(request):
   else:
     form = SignUpForm()
   return render(request, 'register.html', {'form': form})
+
+
+def update_user(request):
+  if request.user.is_authenticated:
+    return render(request, "update_user.html", {})
+  else:
+    messages.success(request, ("You must be logged in to view this page"))
+    return redirect('home')
