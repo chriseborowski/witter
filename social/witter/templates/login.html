@@ -2,6 +2,11 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+<h2>Welcome back, @{{ user.username }}!</h1>
+
+{% else %}
+
 <div class="col-md-6 offset-md-3">
 
 <h1>Login</h1>
@@ -20,4 +25,5 @@
 
 </div>
 
+{% endif %}
 {% endblock %}
