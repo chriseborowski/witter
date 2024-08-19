@@ -48,7 +48,7 @@ class SignUpForm(UserCreationForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-  # email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your email address'}))
+  email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your email address'}))
   first_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your first name'}))
   last_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your last name'}))
 
@@ -64,7 +64,7 @@ class ProfileUpdateForm(forms.ModelForm):
   
   def save(self, commit=True):
     profile = super().save(commit=False)
-    # profile.user.email = self.cleaned_data['email']
+    profile.user.email = self.cleaned_data['email']
     profile.user.first_name = self.cleaned_data['first_name']
     profile.user.last_name = self.cleaned_data['last_name']
     if commit:
