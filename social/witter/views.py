@@ -3,6 +3,8 @@ from django.contrib import messages
 from .models import UserProfile, Witt
 from .forms import WittForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+from django import forms
 
 # Create your views here.
 def home(request):
