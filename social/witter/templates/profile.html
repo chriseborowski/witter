@@ -16,7 +16,7 @@
           <div class="alert alert-info" role="alert">
             <div class="container">
               <div class="row">
-                <div class="col-1">
+                <div class="col-2">
 
                   {% if profile.profile_image %}
                   <img src="{{ profile.profile_image.url }}" width="50" height="50" class="rounded-circle" alt="@{{ profile.user.username }} on Witter" title="@{{ profile.user.username }} on Witter">
@@ -29,10 +29,14 @@
 
                 </div>
 
-                <div class="col-10">
+                <div class="col-10" style="text-align: left;">
             
-            {{ witt }}
-          
+            <strong>{{ witt.body }}</strong>
+            <br>
+
+            <small class="text-muted">
+              <a href="{{ profile.user.username }}" title="@{{ profile.user.username }} on Witter">@{{ witt.user.username }}</a> witted on {{ witt.created_at }}
+            </small>
 
                   </div>
               </div>  
