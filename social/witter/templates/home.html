@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -12,12 +13,35 @@
 
 {% for witt in witts %}
 
-  <div class="alert alert-info" role="alert">
-    <small class="text-muted">
-      <b>@{{ witt.user.username }}</b> witted on {{ witt.created_at}} <br>
-    </small>
-    {{ witt.body }}
-  </div>
+<div class="alert alert-info" role="alert">
+            <div class="container">
+              <div class="row">
+                <div class="col-2">
+
+                  {% if witt.user.profile.profile_image %}
+                  <img src="{{ witt.user.profile.profile_image.url }}" width="50" height="50" class="rounded-circle" alt="@{{ witt.user.profile.user.username }} on Witter" title="@{{ witt.user.profile.user.username }} on Witter">
+                  
+                  {% else %}
+
+                  <img src="{% static 'images/default_profile_pic.png' %}" width="50" height="50" class="rounded-circle" alt="@{{ witt.user.profile.user.username }} on Witter" title="@{{ witt.user.profile.user.username }} on Witter">
+
+                  {% endif %}
+
+                </div>
+
+                <div class="col-10" style="text-align: left;">
+            
+            <strong>{{ witt.body }}</strong>
+            <br>
+
+            <small class="text-muted">
+              <a href="{{ witt.user.profile.user.username }}" title="@{{ witt.user.profile.user.username }} on Witter">@{{ witt.user.username }}</a> witted on {{ witt.created_at }}
+            </small>
+
+                  </div>
+              </div>  
+            </div>
+          </div>
 
 {% endfor %}
 
