@@ -3,6 +3,13 @@ from .models import Witt, UserProfile
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+class ProfilePictureForm(forms.ModelForm):
+  profile_image = forms.ImageField(label="Profile Picture")
+
+  class Meta:
+    model = UserProfile
+    fields = ('profile_image',)
+
 class WittForm(forms.ModelForm):
     body = forms.CharField(required=True,
     widget=forms.widgets.Textarea(
