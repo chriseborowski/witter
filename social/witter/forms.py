@@ -23,7 +23,7 @@ class WittForm(forms.ModelForm):
     
     class Meta:
         model = Witt
-        exclude = ("user", )
+        exclude = ("user", "likes",)
 
 
 class SignUpForm(UserCreationForm):
