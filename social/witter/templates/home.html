@@ -39,7 +39,12 @@
                 @{{ witt.user.username }}</a>
                witted on {{ witt.created_at }}
                - {{ witt.number_of_likes }} likes -
+
+               {% if user in witt.likes.all %}
+               <a href="{% url 'witt_like' witt.id %}" title="Like">Unlike</a>
+               {% else %}
                <a href="{% url 'witt_like' witt.id %}" title="Like">Like</a>
+               {% endif %}
             </small>
 
                   </div>
