@@ -40,10 +40,10 @@
                witted on {{ witt.created_at }}
                
                {% if user in witt.likes.all %}
-               <a href="{% url 'witt_like' witt.id %}" title="Like"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
+               <a href="{% url 'witt_like' witt.id %}" title="Unlike"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
 
                {% else %}
-               <a href="{% url 'witt_like' witt.id %}" title="Unlike"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
+               <a href="{% url 'witt_like' witt.id %}" title="Like"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
                {% endif %}
             </small>
 
