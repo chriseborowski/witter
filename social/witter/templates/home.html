@@ -35,7 +35,11 @@
             <br>
 
             <small class="text-muted">
-              <a href="{{ witt.user.profile.user.username }}" title="@{{ witt.user.profile.user.username }} on Witter">@{{ witt.user.username }}</a> witted on {{ witt.created_at }}
+              <a href="{{ witt.user.profile.user.username }}" title="@{{ witt.user.profile.user.username }} on Witter">
+                @{{ witt.user.username }}</a>
+               witted on {{ witt.created_at }}
+               - {{ witt.number_of_likes }} likes -
+               <a href="{% url 'witt_like' witt.id %}" title="Like">Like</a>
             </small>
 
                   </div>
