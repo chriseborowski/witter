@@ -38,12 +38,12 @@
               <a href="{{ witt.user.profile.user.username }}" title="@{{ witt.user.profile.user.username }} on Witter">
                 @{{ witt.user.username }}</a>
                witted on {{ witt.created_at }}
-               - {{ witt.number_of_likes }} likes -
-
+               
                {% if user in witt.likes.all %}
-               <a href="{% url 'witt_like' witt.id %}" title="Like"><i class="fa-solid fa-heart"></i></a>
+               <a href="{% url 'witt_like' witt.id %}" title="Like"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
+
                {% else %}
-               <a href="{% url 'witt_like' witt.id %}" title="Unlike"><i class="fa fa-heart-o"></i></a>
+               <a href="{% url 'witt_like' witt.id %}" title="Unlike"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
                {% endif %}
             </small>
 
