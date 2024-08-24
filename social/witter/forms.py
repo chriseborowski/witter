@@ -5,10 +5,11 @@ from django.contrib.auth.models import User
 
 class ProfilePictureForm(forms.ModelForm):
   profile_image = forms.ImageField(label="Profile Picture")
+  profile_bio = forms.CharField(label="Profile Bio", widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Your profile bio'}), max_length=500, required=False)
 
   class Meta:
     model = UserProfile
-    fields = ('profile_image',)
+    fields = ('profile_image', 'profile_bio')
 
 class WittForm(forms.ModelForm):
     body = forms.CharField(required=True,
