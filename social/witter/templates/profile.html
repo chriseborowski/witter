@@ -37,7 +37,7 @@
             <small class="text-muted">
               <a href="{% url 'profile' profile.user.id %}" title="@{{ witt.user.profile.user.username }} on Witter">
                 @{{ witt.user.username }}</a>
-               witted on {{ witt.created_at }}
+               witted on <a href="{% url 'witt_show' witt.id %}" title="@{{ witt.user.profile.user.username }} on Witter: {{ witt.body }}">{{ witt.created_at }}</a>
                
                {% if user in witt.likes.all %}
                <a href="{% url 'witt_like' witt.id %}" title="Unlike"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
@@ -63,6 +63,11 @@
 
         <img src="{{ profile.profile_image.url }}" class="rounded-circle" width="200" height="200" alt="@{{ profile.user.username }} on Witter" title="@{{ profile.user.username }} on Witter">
 
+        {% endif %}
+        <br><br>
+
+        {% if profile.profile_bio %}
+        {{ profile.profile_bio }}
         {% endif %}
         <br><br>
 
