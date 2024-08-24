@@ -37,7 +37,7 @@
             <small class="text-muted">
               <a href="{% url 'profile' pk=witt.user.id %}" title="@{{ witt.user.profile.user.username }} on Witter">
                 @{{ witt.user.username }}</a>
-               witted on {{ witt.created_at }}
+               witted on <a href="{% url 'witt_show' witt.id %}" title="@{{ witt.user.profile.user.username }} on Witter: {{ witt.body }}">{{ witt.created_at }}</a>
                
                {% if user in witt.likes.all %}
                <a href="{% url 'witt_like' witt.id %}" title="Unlike"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
