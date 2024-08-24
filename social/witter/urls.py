@@ -10,4 +10,5 @@ urlpatterns = [
   path('register/', views.register_user, name='register'),
   path('update_user/', views.update_user, name='update_user'),
   path('witt_like/<int:pk>', views.witt_like, name='witt_like'),
+  path('witt_show/<int:pk>', views.witt_show, name='witt_show'),
 ]
