@@ -132,3 +132,12 @@ def witt_like(request, pk):
   else:
     messages.success(request, ("You must be logged in to view this page."))
     return redirect('home')
+
+
+def witt_show(request, pk):
+  witt = get_object_or_404(Witt, id=pk)
+  if witt:
+    return render(request, 'show_witt.html', {'witt': witt})
+  else:
+    messages.success(request, ("That witt does not exist."))
+    return redirect('home')
