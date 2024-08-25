@@ -30,11 +30,11 @@
 
       {% if result.profile.profile_image %}
 
-      <img src="{{ result.profile.profile_image.url }}" width="200" height="200" class="img-fluid rounded-start" alt="@{{ result.profile.user.username }} on Witter" title="@{{ result.profile.user.username }} on Witter">
+      <img src="{{ result.profile.profile_image.url }}" width="150" height="150"  class="rounded-circle" alt="@{{ result.profile.user.username }} on Witter" title="@{{ result.profile.user.username }} on Witter">
 
       {% else %}
 
-      <img src="{% static 'images/default_profile_pic.png' %}" class="img-fluid rounded-start" alt="Witter user profile picture">
+      <img src="{% static 'images/default_profile_pic.png' %}" width="150" height="150"  class="rounded-circle"  alt="Witter user profile picture">
 
       {% endif %}
 
