@@ -36,8 +36,8 @@ def profile_list(request):
 
 def profile(request, pk):
   if request.user.is_authenticated:
-    profile = UserProfile.objects.get(user_id=pk)
-    witt = Witt.objects.filter(user_id=pk).order_by('-created_at')
+    profile = UserProfile.objects.get(user__id=pk)
+    witt = Witt.objects.filter(user__id=pk).order_by('-created_at')
 
     # Follow/Unfollow logic using POST
     if request.method == "POST":
@@ -102,7 +102,7 @@ def register_user(request):
 
 def update_user(request):
   if request.user.is_authenticated:
-    current_user = UserProfile.objects.get(user_id=request.user.id)
+    current_user = UserProfile.objects.get(user__id=request.user.id)
     profile_user = UserProfile.objects.get(user__id=request.user.id)
     
     # Get forms
