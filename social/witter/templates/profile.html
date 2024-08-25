@@ -45,6 +45,12 @@
                {% else %}
                <a href="{% url 'witt_like' witt.id %}" title="Like"><i class="fa-solid fa-heart" style="font-size:12px"> &NonBreakingSpace;{{ witt.number_of_likes }}</i></a>
                {% endif %}
+               
+               {% if request.user.username == profile.user.username %}
+               <a href="{% url 'delete_witt' witt.id %}" title="Delete">
+                <i class="fas fa-trash-alt" style="color:blue"></i>
+               </a>
+               {% endif %}
             </small>
 
                   </div>
