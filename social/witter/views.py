@@ -182,3 +182,12 @@ def delete_witt(request, pk):
   else:
     messages.success(request, ("You must be logged in to view this page"))
     return redirect(request.META.get("HTTP_REFERER"))
+
+
+def search(request):
+  if request.method == "POST":
+    search = request.POST['search']
+    searched = Witt.objects.filter(body__contains=search)
+    return render(request, 'search.html', {'search': search, 'searched': searched})
+  else:
+    return render(request, 'search.html', {})
