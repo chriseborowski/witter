@@ -14,4 +14,5 @@ urlpatterns = [
   path('witt_like/<int:pk>', views.witt_like, name='witt_like'),
   path('witt_show/<int:pk>', views.witt_show, name='witt_show'),
   path('delete_witt/<int:pk>', views.delete_witt, name='delete_witt'),
+  path('search/', views.search, name='search'),
 ]
