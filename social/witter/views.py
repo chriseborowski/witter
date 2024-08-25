@@ -167,3 +167,18 @@ def following(request, pk):
   else:
     messages.success(request, ("You must be logged in to view this page"))
     return redirect('home')
+
+
+def delete_witt(request, pk):
+  if request.user.is_authenticated:
+    witt = get_object_or_404(Witt, id=pk)
+    if request.user.username == witt.user.username:
+      witt.delete()
+      messages.success(request, ("Your witt has been deleted."))
+      return redirect(request.META.get("HTTP_REFERER"))
+    else:
+      messages.success(request, ("You are not authorized to perform this action."))
+      return redirect('home')
+  else:
+    messages.success(request, ("You must be logged in to view this page"))
+    return redirect(request.META.get("HTTP_REFERER"))
