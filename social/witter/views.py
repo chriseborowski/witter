@@ -141,3 +141,16 @@ def witt_show(request, pk):
   else:
     messages.success(request, ("That witt does not exist."))
     return redirect('home')
+
+
+def followers(request, pk):
+  if request.user.is_authenticated:
+    if request.user.id == pk:
+      profiles = UserProfile.objects.get(user__id=pk)
+      return render(request, 'followers.html', {'profiles': profiles, 'followers': followers})
+    else:
+      messages.success(request, ("You cannot access this page. You will be redirected to the home page shortly."))
+      return redirect('home')
+  else:
+    messages.success(request, ("You must be logged in to view this page"))
+    return redirect('home')
