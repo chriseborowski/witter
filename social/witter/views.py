@@ -154,3 +154,16 @@ def followers(request, pk):
   else:
     messages.success(request, ("You must be logged in to view this page"))
     return redirect('home')
+
+
+def following(request, pk):
+  if request.user.is_authenticated:
+    if request.user.id == pk:
+      profiles = UserProfile.objects.get(user__id=pk)
+      return render(request, 'following.html', {'profiles': profiles, 'following': following})
+    else:
+      messages.success(request, ("You cannot access this page. You will be redirected to the home page shortly."))
+      return redirect('home')
+  else:
+    messages.success(request, ("You must be logged in to view this page"))
+    return redirect('home')
