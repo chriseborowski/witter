@@ -1,4 +1,4 @@
-# Witter: Social Media Microblogging Platform
+# Witter: Twitter-Like Social Media Microblogging Platform
 
 <img src="witter/images/Witter-Social-Media-Microblogging-Platform-logo.jpg" alt="Witter: Social Media Microblogging Platform" title="Witter: Social Media Microblogging Platform" />
 
