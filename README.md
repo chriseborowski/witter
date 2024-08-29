@@ -1,6 +1,6 @@
 # Witter: Twitter-Like Social Media Microblogging Platform
 
-<img src="witter/images/Witter-Social-Media-Microblogging-Platform-logo.jpg" alt="Witter: Social Media Microblogging Platform" title="Witter: Social Media Microblogging Platform" />
+<img src="https://github.com/chriseborowski/witter/blob/main/social/witter/static/images/Witter%20Twitter-Like%20Social%20Media%20Microblogging%20Platform%20logo.jpeg" alt="Witter: Twitter-Like Social Media Microblogging Platform" title="Witter: Twitter-Like Social Media Microblogging Platform" />
 
 Witter is a robust Python-based social media microblogging platform designed for efficient handling of user posts, follower relationships, and related operations, all through a web interface.
 
