@@ -2,7 +2,7 @@
 
 <img src="https://github.com/chriseborowski/witter/blob/main/social/witter/static/images/Witter%20Twitter-Like%20Social%20Media%20Microblogging%20Platform%20logo.jpeg" alt="Witter: Twitter-Like Social Media Microblogging Platform" title="Witter: Twitter-Like Social Media Microblogging Platform" />
 
-Witter is a robust Python-based social media microblogging platform designed for efficient handling of user posts, follower relationships, and related operations, all through a web interface. For a detailed description and overview of WalletOne's main functionalities, see this blog post: [Introducing Witter: A Dynamic Social Media Platform with Python Backend](https://chriseborowski.notion.site/Introducing-Witter-A-Dynamic-Social-Media-Platform-with-Python-Backend-4afad372201f41c9ac930fd8ab890220]).
+Witter is a robust Python-based social media microblogging platform designed for efficient handling of user posts, follower relationships, and related operations, all through a web interface. For a detailed description and overview of WalletOne's main functionalities, see this blog post: [Introducing Witter: A Dynamic Social Media Platform with Python Backend](https://chriseborowski.notion.site/Introducing-Witter-A-Dynamic-Social-Media-Platform-with-Python-Backend-4afad372201f41c9ac930fd8ab890220).
 
 ## Key Features
 
